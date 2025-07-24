@@ -1,9 +1,11 @@
-package cricky.veincuts;
+package com.cricky.veincuts;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.google.gson.JsonObject;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.event.player.PlayerBlockBreakEvents;
+import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -13,9 +15,9 @@ import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-import java.io.FileWriter;
 import java.io.IOException;
 import java.io.Reader;
+import java.io.Writer;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayDeque;
@@ -25,22 +27,27 @@ import java.util.List;
 import java.util.Set;
 
 public class VeinCutsMod implements ModInitializer {
-    private static final String CONFIG_FILE = "config/veincuts.json";
+    // Use FabricLoader to get the real config directory
+    private static final Path CONFIG_PATH = FabricLoader.getInstance()
+        .getConfigDir()
+        .resolve("veincuts.json");
+
     private int yLevelLimit = 0;
     private boolean veining = false;
     private final Gson gson = new Gson();
 
     @Override
     public void onInitialize() {
+        System.out.println("[VeinCuts] onInitialize() called");
         loadConfig();
+        System.out.println("[VeinCuts] yLevelLimit = " + yLevelLimit);
 
-        // Use the BEFORE event, which returns boolean
         PlayerBlockBreakEvents.BEFORE.register((World world,
                                                 PlayerEntity player,
                                                 BlockPos pos,
                                                 BlockState state,
                                                 BlockEntity blockEntity) -> {
-            // Only on the server side
+            // Only on the logical server
             if (!(world instanceof ServerWorld) || !(player instanceof ServerPlayerEntity)) {
                 return true;
             }
@@ -87,32 +94,38 @@ public class VeinCutsMod implements ModInitializer {
             }
 
             veining = false;
-            // Return true to let the vanilla break continue
+            // Return true to let Minecraft break the original block normally
             return true;
         });
     }
 
     private void loadConfig() {
         try {
-            Path cfg = Path.of(CONFIG_FILE);
-            if (!Files.exists(cfg.getParent())) {
-                Files.createDirectories(cfg.getParent());
+            System.out.println("[VeinCuts] Loading config at " + CONFIG_PATH.toAbsolutePath());
+            Path parent = CONFIG_PATH.getParent();
+            if (!Files.exists(parent)) {
+                Files.createDirectories(parent);
             }
-            if (!Files.exists(cfg)) {
+
+            if (!Files.exists(CONFIG_PATH)) {
+                System.out.println("[VeinCuts] Config not found, creating default");
                 JsonObject defaults = new JsonObject();
                 defaults.addProperty("yLevelLimit", 0);
-                try (FileWriter writer = new FileWriter(cfg.toFile())) {
-                    gson.toJson(defaults, writer);
+                try (Writer writer = Files.newBufferedWriter(CONFIG_PATH)) {
+                    new GsonBuilder().setPrettyPrinting().create().toJson(defaults, writer);
                 }
             }
-            try (Reader reader = Files.newBufferedReader(cfg)) {
+
+            try (Reader reader = Files.newBufferedReader(CONFIG_PATH)) {
                 JsonObject json = gson.fromJson(reader, JsonObject.class);
                 yLevelLimit = json.has("yLevelLimit")
                     ? json.get("yLevelLimit").getAsInt()
                     : 0;
+                System.out.println("[VeinCuts] Loaded yLevelLimit=" + yLevelLimit);
             }
         } catch (IOException e) {
-            System.err.println("[VeinCuts] Failed to load config: " + e);
+            System.err.println("[VeinCuts] Failed to load config:");
+            e.printStackTrace();
         }
     }
 }

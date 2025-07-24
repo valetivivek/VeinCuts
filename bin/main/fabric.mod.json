@@ -1,18 +1,28 @@
 {
   "schemaVersion": 1,
   "id": "veincuts",
-  "version": "${version}",
+  "version": "1.0.0",
   "name": "VeinCuts",
-  "description": "Custom vein‑miner that honors a Y‑level cutoff when using shovels",
-  "authors": ["Cricky"],
-  "contact": { "sources": "" },
+  "description": "A lightweight Fabric mod that adds shovel-based vein-mining with configurable Y-level control.",
+  "authors": ["valetivivek"],
+  "contact": {
+    "homepage": "https://github.com/valetivivek/veincuts",
+    "sources": "https://github.com/valetivivek/veincuts"
+  },
   "license": "MIT",
   "environment": "*",
   "entrypoints": {
-    "main": ["com.cricky.veincuts.VeinCutsMod"]
+    "main": [
+      "com.cricky.veincuts.VeinCutsMod"
+    ]
   },
   "depends": {
-    "fabricloader": ">=0.14.22",
-    "fabric": "*"
+    "fabricloader": ">=0.14.0",
+    "fabric": "*",
+    "minecraft": "1.21.6",
+    "java": ">=17"
+  },
+  "suggests": {
+    "modmenu": "*"
   }
 }
