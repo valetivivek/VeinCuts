@@ -17,7 +17,6 @@
 1. **Download** the latest `veincuts-<version>.jar` from the [Releases](https://github.com/valetivivek/veincuts/releases).
 2. **Locate** your Fabric 1.21.6 instance’s `mods/` folder:
    - **Vanilla launcher**: `C:\Users\<you>\AppData\Roaming\.minecraft\mods`
-   - **Modrinth launcher**: Click the ⚙️ icon → **Open Folder** → **mods**
 3. **Copy** the JAR file into the `mods/` directory.
 4. **Launch** Minecraft once to generate the default configuration file at `config/veincuts.json`.
 
@@ -31,3 +30,33 @@ Open **`config/veincuts.json`** after the first run. You’ll see:
 {
   "yLevelLimit": 0
 }
+```
+- yLevelLimit: The lowest Y-coordinate (inclusive) to which vein-mining will occur. 
+
+Example:
+```json
+{
+  "yLevelLimit": 32
+}
+```
+- Save the file and restart Minecraft to apply changes.
+
+##Contributing
+
+-Fork the repository and create a new feature/fix branch.
+
+-Implement your changes, adhering to existing style conventions.
+
+-Commit, push, and open a Pull Request against main with a clear description and testing notes.
+
+
+
+
+
+
+
+
+
+
+
+    
