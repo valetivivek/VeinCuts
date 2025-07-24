@@ -41,13 +41,15 @@ Example:
 ```
 - Save the file and restart Minecraft to apply changes.
 
+---
+
 ##Contributing
 
--Fork the repository and create a new feature/fix branch.
+- Fork the repository and create a new feature/fix branch.
 
--Implement your changes, adhering to existing style conventions.
+- Implement your changes, adhering to existing style conventions.
 
--Commit, push, and open a Pull Request against main with a clear description and testing notes.
+- Commit, push, and open a Pull Request against main with a clear description and testing notes.
 
 
 
