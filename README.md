@@ -14,7 +14,7 @@
 
 ## Installation
 
-1. **Download** the latest `veincuts-<version>.jar` from the [Releases](https://github.com/valetivivek/veincuts/releases).
+1. **Download** the latest `veincuts-<1.0.0>.jar` from the [Releases](https://github.com/valetivivek/veincuts/releases).
 2. **Locate** your Fabric 1.21.6 instance’s `mods/` folder:
    - **Vanilla launcher**: `C:\Users\<you>\AppData\Roaming\.minecraft\mods`
 3. **Copy** the JAR file into the `mods/` directory.
@@ -40,21 +40,6 @@ Example:
 }
 ```
 - Save the file and restart Minecraft to apply changes.
-
----
-
-## Contributing
-
-- Fork the repository and create a new feature/fix branch.
-- Implement your changes, adhering to existing style conventions.
- a Pull Request against main with a clear description and testing notes.
-
----
-
-## License
-
-- VeinCuts is released under the MIT License[License.txt](https://github.com/user-attachments/files/21413152/License.txt).
-
 
 
 
