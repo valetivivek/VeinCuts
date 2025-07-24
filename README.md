@@ -46,11 +46,14 @@ Example:
 ## Contributing
 
 - Fork the repository and create a new feature/fix branch.
-
 - Implement your changes, adhering to existing style conventions.
+ a Pull Request against main with a clear description and testing notes.
 
-- Commit, push, and open a Pull Request against main with a clear description and testing notes.
+---
 
+## License
+
+- VeinCuts is released under the MIT License[License.txt](https://github.com/user-attachments/files/21413152/License.txt).
 
 
 
