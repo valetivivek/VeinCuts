@@ -43,7 +43,7 @@ Example:
 
 ---
 
-##Contributing
+## Contributing
 
 - Fork the repository and create a new feature/fix branch.
 
