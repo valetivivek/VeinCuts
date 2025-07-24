@@ -12,6 +12,15 @@
 
 ---
 
+## Compatibility
+
+- ✔️ **Minecraft:** 1.21.6  
+- ✔️ **Fabric Loader:** 0.15+  
+- ❌ **Forge:** Not supported  
+- ❌ **Quilt:** Not tested  
+
+---
+
 ## Installation
 
 1. **Download** the latest `veincuts-<1.0.0>.jar` from the [Releases](https://github.com/valetivivek/veincuts/releases).
@@ -31,7 +40,8 @@ Open **`config/veincuts.json`** after the first run. You’ll see:
   "yLevelLimit": 0
 }
 ```
-- yLevelLimit: The lowest Y-coordinate (inclusive) to which vein-mining will occur. 
+- yLevelLimit: The lowest Y-coordinate (inclusive) to which vein-mining will occur.
+
 
 Example:
 ```json
@@ -39,12 +49,15 @@ Example:
   "yLevelLimit": 32
 }
 ```
+
 - Save the file and restart Minecraft to apply changes.
 
+---
+## Usage
+
+- Equip a shovel.
+- Break a block (e.g., dirt, gravel, sand) that has adjacent blocks of the same type.
+- All connected blocks of that type will break instantly if above the Y-level cutoff.
+⚠️ Note: Only works with vanilla shovel tools. Configurable via veincuts.json.
 
 
-
-
-
-
-    
