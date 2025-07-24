@@ -58,6 +58,6 @@ Example:
 - Equip a shovel.
 - Break a block (e.g., dirt, gravel, sand) that has adjacent blocks of the same type.
 - All connected blocks of that type will break instantly if above the Y-level cutoff.
-⚠️ Note: Only works with vanilla shovel tools. Configurable via veincuts.json.
+- ⚠️ Note: Only works with vanilla shovel tools. Configurable via veincuts.json.
 
 
