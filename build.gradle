@@ -1,0 +1,42 @@
+plugins {
+    id 'fabric-loom' version '1.10.1'
+}
+
+group = 'com.cricky.veincuts'
+version = '1.0.0'
+archivesBaseName = 'veincuts'
+
+repositories {
+    // Where to fetch Minecraft & mappings
+    maven { url 'https://maven.fabricmc.net/' }
+    mavenCentral()
+}
+
+dependencies {
+    // Minecraft + Yarn mappings
+    minecraft    'com.mojang:minecraft:1.21.6'
+    mappings      'net.fabricmc:yarn:1.21.6+build.1:v2'
+
+    // Fabric Loader API (for ModInitializer)
+    modImplementation 'net.fabricmc:fabric-loader:0.16.14'
+
+    // Fabric API (blocks, events, etc.)
+    modImplementation 'net.fabricmc.fabric-api:fabric-api:0.128.2+1.21.6'
+
+    // GSON for config JSON parsing
+    implementation 'com.google.code.gson:gson:2.10.1'
+}
+
+tasks.processResources {
+    inputs.property 'version', project.version
+    filesMatching('fabric.mod.json') {
+        expand 'version': project.version
+    }
+}
+
+// Teach Gradle to use Java 21 toolchain (so you don't need to juggle your system JAVA_HOME)
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(21)
+    }
+}

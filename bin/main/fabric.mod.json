@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "id": "veincuts",
+  "version": "${version}",
+  "name": "VeinCuts",
+  "description": "Custom vein‑miner that honors a Y‑level cutoff when using shovels",
+  "authors": ["Cricky"],
+  "contact": { "sources": "" },
+  "license": "MIT",
+  "environment": "*",
+  "entrypoints": {
+    "main": ["com.cricky.veincuts.VeinCutsMod"]
+  },
+  "depends": {
+    "fabricloader": ">=0.14.22",
+    "fabric": "*"
+  }
+}
